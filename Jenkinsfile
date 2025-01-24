@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+
     stages {
         stage('Checkout') {
             steps {
@@ -9,19 +9,19 @@ pipeline {
                     url: 'https://github.com/Gaurav12341234/CI-CD-React-App.git'
             }
         }
-        
+
         stage('Install') {
             steps {
                 // Install Node dependencies
-                bat 'npm install'
+                sh 'npm install'
             }
         }
-        
+
         stage('Lint') {
             steps {
                 script {
                     try {
-                        bat 'npm run lint'
+                        sh 'npm run lint'
                     } catch (err) {
                         // Don't fail the build, but mark it as unstable
                         unstable(message: "Linting issues found")
@@ -31,21 +31,21 @@ pipeline {
                 }
             }
         }
-        
+
         stage('Build') {
             steps {
                 // Create production build
-                bat 'npm run build'
+                sh 'npm run build'
             }
         }
-        
+
         stage('Deploy') {
             steps {
-                echo "deploy success"
+                echo "Deploy success"
             }
         }
     }
-    
+
     post {
         success {
             echo 'Build and deployment successful!'
