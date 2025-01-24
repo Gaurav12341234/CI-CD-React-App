@@ -5,8 +5,8 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Get code from GitHub repository
-                git branch: 'master', 
-                    url: 'https://github.com/NikhilCyberk/basic-react-app.git'
+                git branch: 'main', 
+                    url: 'https://github.com/Gaurav12341234/CI-CD-React-App.git'
             }
         }
         
